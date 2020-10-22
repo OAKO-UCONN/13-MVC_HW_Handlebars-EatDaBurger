@@ -4,7 +4,7 @@ var orm = require("../config/orm.js");
 console.log("RAN @ ./models.burger.js");
 var burger = {
 
-  //Select all burgers.
+  //Select all Burgers.
   allBurgersMenu: function (cb) {
     orm.all("burgers", function (res) {
       cb(res);
