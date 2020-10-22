@@ -19,8 +19,12 @@ function objToSql(ob) {
 
   for (var key in ob) {
     arr.push(key + "=" + ob[key]);
-  }
-
+    if (Object.hasOwnProperty.call(obj, key)) {
+      if (typeof value === "string" && value.indexOf(" ") >= 0) {
+        value = `'${value}'`;
+      }
+      array.push(`${key} = ${value}`);
+    }
   return arr.toString();
 }
 
@@ -57,7 +61,30 @@ var orm = {
   },
   // objColVals would be the columns and values that you want to update
   // an example of objColVals would be {name: panther, sleepy: true}
-  update: function (table, objColVals, condition, cb) {}
-};
+
+  //Update Function
+  update: function (table, objColVals, condition, cb) {
+    let updatequeryString = `UPDATE ${table}`+  ` SET `+objToSql(objColVals)+` WHERE `+ condition ;
+    console.log(updatequeryString);
+    connection.query(updatequeryString, (err, result) => {
+      if (err) {
+        throw err;
+      }
+      cbo(result);
+    });  
+  },
+
+  //Delete Function
+  delete: function (table, condition, cbo) {
+    let DeletequeryString = "DELETE FROM " + table + " WHERE "+ condition;
+    connection.query(DeletequeryString, function(err, result) {
+      if (err) {
+        throw err;
+      }
+      cbo(result);
+    });
+  }
+}
+}
 
 module.exports = orm;
