@@ -3,12 +3,19 @@ var express = require("express");
 var router = express.Router();
 var burger = require("../models/burger.js");
 
-// get route -> index
+// get route -> index ================================================
 router.get("/", function (req, res) {
-  res.redirect("/burgers");
+  burger.allBurgersMenu(data => {
+    var hbsObject = {
+      burgers: data
+    };
+    console.log(hbsObject);
+    res.render("index", hbsObject);
+  });
+  //res.redirect("/burgers");
 });
 
-router.get("/burgers", function (req, res) {
+router.get("api/burgers", function (req, res) {
   // express callback response by calling burger.selectAllBurger
   burger.all(function (burgerData) {
     // wrapper for orm.js that using MySQL query callback will return burger_data, render to index with handlebar
@@ -16,13 +23,13 @@ router.get("/burgers", function (req, res) {
   });
 });
 
-// post route -> back to index
-router.post("/burgers/create", function (req, res) {
+// post route -> back to index ========================================================
+router.post("api/burgers/create", function (req, res) {
   // takes the request object using it as input for burger.addBurger
 });
 
-// put route -> back to index
-router.put("/burgers/:id", function (req, res) {
+// put route -> back to index =========================================================
+router.put("api/burgers/:id", function (req, res) {
   burger.update(req.params.id, function (result) {});
 });
 
