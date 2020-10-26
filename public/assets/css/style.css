@@ -1,79 +1,19 @@
-/* header background */
-.img-fluid {
-    max-width: 100%;
-    max-height: auto;
+li {
+  padding: 5px;
+  margin: 5px;
+  background: #faebd7;
 }
 
-#bkgd-img {
-    opacity: 0.4;
+.label {
+  font-weight: bold;
 }
 
-#header {
-    background-color: rgba(88, 75, 75, 0.701);
+.create-update-form {
+  padding: 5px;
+  margin: 5px;
+  background: aqua;
 }
 
-body {
-    background-image: url(../images/burger-background.webp);
-    justify-content: center;
-    background-size: cover;
-}
-
-.header-img {
-    background-size: cover;
-    width: fill;
-    height: fill;
-}
-
-/* devour button */
-.change-devour {
-    font-size: 17px;
-    color: black;
-    background-color: #FF3233;
-    padding: 3px 6px;
-}
-
-/* delete button */
-.delete-burger {
-    font-size: 17px;
-    color: black;
-    background-color: #FF3233;
-    padding: 3px 6px;
-}
-
-/* list of burgers */
-#burger-list {
-    color: rgb(0, 0, 0);
-    text-shadow: 3px 3px 3px rgba(205, 203, 203, 0.961);
-    text-align: center;
-}
-
-/* label for creation station */
-.create {
-    color: #FF3233;
-    text-shadow: 0px 2px 2px #616161;
-    text-shadow: 0px 1px 1px #dfdfdf;
-    font-size: xxx-large;
-    justify-content: center;
-}
-
-/* burger create form */
-#burger-form {
-    background-color: rgba(0, 0, 0, 0.701);
-    font-size: 50px;
-    color: white;
-}
-
-#submit {
-    font-size: 24px;
-    background-color: black;
-    border-color: #dfdfdf;
-    text-shadow: 0px 2px 2px #171717;
-}
-
-/* list of burgers  */
-.burger-menu {
-    color: white;
-    font-size: 24px;
-    list-style: none;
-    background-color: rgba(0, 0, 0, 0.701);
+.form-group {
+  margin-bottom: 5px;
 }
