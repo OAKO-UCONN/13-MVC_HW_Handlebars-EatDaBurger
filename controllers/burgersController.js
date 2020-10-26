@@ -8,7 +8,9 @@ var burger = require("../models/burger.js");
 ////////////////////////////// GET INDEX //////////////////////////////////////
 // get route -> index ================================================
 router.get("/", function (req, res) {
+  console.log("Runnning: router.get(~/~, function (req, res) {")
   burger.all(data => {
+    console.log("Running: burger.all(data => {")
     var hbsObject = {
       burgers: data
     };
@@ -22,6 +24,7 @@ router.get("/", function (req, res) {
 
 //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; GET ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 router.get("api/burgers", function (req, res) {
+  console.log("Running: router.get(~api/burgers~, function (req, res) {")
   // express callback response by calling burger.selectAllBurger
   burger.all(function (burgerData) {
     // wrapper for orm.js that using MySQL query callback will return burger_data, render to index with handlebar
@@ -35,6 +38,7 @@ router.get("api/burgers", function (req, res) {
 
 // post route -> back to index ========================================================
 router.post("api/burgers/create", function (req, res) {
+  console.log("Running: router.post(~api/burgers/create~, function (req, res) {")
   // takes the request object using it as input for burger.addBurger
 });
 //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -44,8 +48,42 @@ router.post("api/burgers/create", function (req, res) {
 
 // put route -> back to index =========================================================
 router.put("api/burgers/:id", function (req, res) {
-  burger.update(req.params.id, function (result) {});
+  console.log("Running: router.put(~api/burgers/:id~, function (req, res) {");
+  var id = params.id;
+  console.log("The ID is: " + id);
+  console.log(req.body.devoured);
+
+  // ^ // UPDATE {==}
+  burger.update(req.params.id.devoured, function (result) {
+    console.log("Running: router.put(~api/burgers/:id~, function (req, res) { ");
+
+    //Handle Errors
+    if (result.changedRows == 0) {
+      return res.status(404).end();
+    } else {
+      // res.redirect("/")
+      return res.status(200).end();
+    };
+  
+  });
 });
 //;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+//;;;;;;;;;;;;;;;;;;;;;;;;;;; DELETE ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+router.delete("/api/burgers/:id", function (req, res) {
+  var id = req.params.id
+
+  // - // DELETE {==}
+  burger.delete(id, (result) => {
+    if (result.affectedRows == 0) {
+      return res.status(404).end();
+    } else {
+      return res.status(200).end();
+    }
+  })
+
+})
 
 module.exports = router;
