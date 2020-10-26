@@ -6,7 +6,7 @@ var burger = {
 
   //Select all Burgers.
   allBurgersMenu: function (cb) {
-    orm.all("burgers", function (res) {
+    orm.allBurgersMenu("burgers", function (res) {
       cb(res);
       console.log("RAN allBurgersMenu(); @ ./models.burger.js");
     });
@@ -14,7 +14,7 @@ var burger = {
 
   //Create a Burger.
   createBurger: function (cols, vals, cbo) {
-    orm.create("burgers", cols, vals, res => {
+    orm.createBurger("burgers", cols, vals, res => {
       cbo(res);
       console.log("RAN createBurger(); @ ./models.burger.js");
     });
@@ -22,7 +22,7 @@ var burger = {
 
   //Update a Burger.
   updateBurger: function (objColVals, condition, cbo) {
-    orm.update("burgers", objColVals, condition, res => {
+    orm.updateBurger("burgers", objColVals, condition, res => {
       cbo(res);
       console.log("RAN updateBurger(); @ ./models.burger.js");
     });

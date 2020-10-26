@@ -1,7 +1,7 @@
 
 $(function () {
     //ajax put request to change status to "devoured" ==========
-    $(".change-devour").on("click", (event) => {
+    $(".change-devour").on("click", function (event) {
         event.preventDefault();
         var id = $(this).data("id");
         // var id = $(this).data("data-id");
@@ -21,7 +21,7 @@ $(function () {
     });
 
     // + //Post request using AJAX to add a new Burger.++++++++++++++++++++
-    $(".create-form").on("submit", function () {
+    $(".create-form").on("submit", () => {
         event.preventDefault();
         var newBurger = {
             name: $("#burgerInput").val().trim()

@@ -35,7 +35,7 @@ var orm = {
   
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ READ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   
-  all: function (tableInput, cb) {
+  allBurgersMenu: function (tableInput, cb) {
     var queryString = "SELECT * FROM " + tableInput + ";";
     connection.query(queryString, function (err, result) {
       if (err) {
@@ -50,7 +50,7 @@ var orm = {
 
   // vals is an array of values that we want to save to cols
   // cols are the columns we want to insert the values into
-  create: function (table, cols, vals, cb) {
+  createBurger: function (table, cols, vals, cb) {
     var queryString = "INSERT INTO " + table;
 
     queryString += " (";
@@ -77,7 +77,7 @@ var orm = {
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ UPDATE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   //Update Function
-  update: function (table, objColVals, condition, cb) {
+  updateBurger: function (table, objColVals, condition, cb) {
     let updatequeryString = `UPDATE ${table}`+  ` SET `+objToSql(objColVals)+` WHERE `+ condition ;
     console.log(updatequeryString);
     connection.query(updatequeryString, (err, result) => {
@@ -93,7 +93,7 @@ var orm = {
 //---------------------------------------------- DELETE --------------------------------------------------------
 
   //Delete Function
-  delete: function (table, condition, cbo) {
+  deleteBurger: function (table, condition, cbo) {
     let DeletequeryString = "DELETE FROM " + table + " WHERE "+ condition;
     connection.query(DeletequeryString, function(err, result) {
       if (err) {
