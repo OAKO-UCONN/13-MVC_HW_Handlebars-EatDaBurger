@@ -1,56 +1,6 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #e2bc6f;
-}
-
-h1 {
-    text-align: center;
-    color: #ce5441;
-    margin-bottom: 6px;
-}
-
-.create-form {
-    background-color: #ecbb58;
-}
-
-.create-form h3 {
-    text-align: center;
-    color: #9c9897;
-    border-radius: 11px 11px 0 0;
-}
-
-.header-image {
-    margin: 0px auto;
-    width: 401px;
-    border-radius: 11px;
-}
-
-.input-group-field {
-    background-color: #ebe8b3;
-    
-}
-
-
-table abody tr:nth-child(odd) {
-    background-color: #f1eb92;
-}
-
-
-table abody tr:nth-child(even) {
-    background-color: #cfca5e;
-}
-
-.form-container {
-    margin: 0 auto;
-    padding: 11px;
-    border-radius: 11px;
-    margin-top: 21px;
-}
-
-.column-container {
-    background-color: #ca7928;
-    border-radius: 11px;
-    padding: 11px;
-    margin-bottom: 21px;
+    background-image: url(../images/burger-background.webp);
+    background-size: cover;
+    justify-content: center;
 }
 
