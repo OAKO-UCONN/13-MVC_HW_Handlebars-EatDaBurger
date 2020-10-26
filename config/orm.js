@@ -28,7 +28,12 @@ function objToSql(ob) {
   return arr.toString();
 }
 
+//|||||||||||||||||||||||||||||||||||||||||||| ORM START ||||||||||||||||||||||||||||||||||||||||||||||||||
+
 var orm = {
+  
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ READ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  
   all: function (tableInput, cb) {
     var queryString = "SELECT * FROM " + tableInput + ";";
     connection.query(queryString, function (err, result) {
@@ -38,6 +43,10 @@ var orm = {
       cb(result);
     });
   },
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+//++++++++++++++++++++++++++++++++++++++++++++ CREATE +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
   // vals is an array of values that we want to save to cols
   // cols are the columns we want to insert the values into
   create: function (table, cols, vals, cb) {
@@ -62,6 +71,10 @@ var orm = {
   // objColVals would be the columns and values that you want to update
   // an example of objColVals would be {name: panther, sleepy: true}
 
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ UPDATE ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
   //Update Function
   update: function (table, objColVals, condition, cb) {
     let updatequeryString = `UPDATE ${table}`+  ` SET `+objToSql(objColVals)+` WHERE `+ condition ;
@@ -74,6 +87,10 @@ var orm = {
     });  
   },
 
+//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+//---------------------------------------------- DELETE --------------------------------------------------------
+
   //Delete Function
   delete: function (table, condition, cbo) {
     let DeletequeryString = "DELETE FROM " + table + " WHERE "+ condition;
@@ -84,7 +101,13 @@ var orm = {
       cbo(result);
     });
   }
+
+//--------------------------------------------------------------------------------------------------------
+
 }
+
+//|||||||||||||||||||||||||||||||||||||||||||||| ORM END ||||||||||||||||||||||||||||||||||||||||||||||||||
+
 }
 
 module.exports = orm;
